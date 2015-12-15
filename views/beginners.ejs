@@ -1,0 +1,22 @@
+<section class="row text-center">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+    <h2 class="searchH2">Beginner Projects</h2>
+    <div class="beginnerProjects">
+      <section class="row text-center block">
+        <% if(beginnerProjects) { %>
+          <% beginnerProjects.forEach(function(value, index) { %>
+            <div class="well">
+              <h2 class="beginnersH2"><%= value.title %> </h2><br>
+              <h3 class="beginnersH3"><a href="http://www.instructables.com<%= value.link%>">Check it out</a></h3>
+              <img src="<%= value.image %>" style="height:300px; width 300px">
+            </div>
+          <% }); %>
+        <% } %>
+      </section>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</section>

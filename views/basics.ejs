@@ -1,0 +1,17 @@
+<section class="row text-center">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-10">
+  <h1 class="basicsH1">5 basic skills for beginner woodworkers!<br><a href="http://www.makeuseof.com/tag/beginners-woodworking-5-skills-need-know/">Full article click here</a></h1>
+  <% if(basicSkills) { %>
+    <% basicSkills.forEach(function(value, index) { %>
+      <div class="well">
+        <h2 class="basicsH2"><%= value.title %> </h2><br>
+        <h3 class="basicsH3"><%= value.text %></h3>
+      </div>
+      <% }); %>
+    <% } %>
+  </div>
+  <div class="col-sm-1">
+  </div>
+</section>

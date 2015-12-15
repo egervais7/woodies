@@ -14,6 +14,8 @@ var searchPage = require('./controllers/search');
 var toolsPage = require('./controllers/tools');
 var projectPage = require('./controllers/projects');
 var beginnerPage = require('./controllers/beginners');
+var basicsPage = require('./controllers/basics');
+var woodPage = require('./controllers/typesOfWood');
 
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
@@ -38,17 +40,37 @@ app.use(function(req, res, next){
 
 //redner login page
 app.get('/', function(req, res){
-  res.render('index');
+  var search = req.body.search;
+  woodPage.search(search, function(woods){
+    res.render('index', woods);
+  });
 });
 
 app.get('/about', function(req, res){
   res.render('about');
 });
 
+app.get('/beginners', function(req, res){
+  var search = req.body.search;
+  beginnerPage.search(search, function(beginnerProjects){
+    res.render('beginners', beginnerProjects);
+  });
+});
+
+app.get('/basics', function(req, res){
+  var search = req.body.search;
+  basicsPage.search(search, function(basicSkills){
+    res.render('basics', basicSkills);
+  });
+});
+
+
+
+
+
 //set up controllers
 app.use('/search', searchPage);
 app.use('/projects', projectPage);
 app.use('/tools', toolsPage);
-app.use('/beginner', beginnerPage);
 
 app.listen(process.env.PORT || 3000);

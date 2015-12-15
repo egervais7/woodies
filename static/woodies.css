@@ -2,3 +2,17 @@
   border : 5px solid black;
   border-radius : 25px;
 }
+.woodImg {
+  background-image : url("http://i.imgur.com/g96Zpo7.jpg?1");
+  background-size : 100% 100%;
+  background-repeat : no-repeat;
+  background-attachment : fixed;
+}
+.toolForm {
+  width : 75%;
+  margin: 0 auto;
+}
+.searchToolForm {
+    width : 75%;
+    margin: 0 auto;
+}

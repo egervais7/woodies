@@ -1,11 +1,23 @@
-<section class="row text-center">
-  <h1>Types of wood</h1>
-</section>
-<section class="row">
-  <div class="col-sm-6">
-  </div>
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-3">
-  </div>
-</section>
+<div class="container container-fluid">
+  <section class="row text-center">
+    <h1>Types of wood</h1>
+  </section>
+  <section class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-5">
+      <% if(woods) { %>
+        <% woods.forEach(function(value, index) { %>
+          <div class="well">
+            <h2 class="beginnersH2"><%= value.title %> </h2><br>
+            <h3 class="beginnersH3"><%= value.text %></h3>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+    <div class="col-sm-5">
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </section>
+</div>
