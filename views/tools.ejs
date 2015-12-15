@@ -1,0 +1,37 @@
+<section class="row text-center">
+  <h1 id="toolH1">Your Tool Page!</h1>
+</section>
+<section class="row">
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-3 text-center toolDiv">
+    <section class="row">
+      <h2 id="toolH2">Tools you own:</h2>
+      <form action="" method="POST" role="form">
+        <input type="text" class="form-control" id="" name="toolName" placeholder="Tool name I own">
+      </form>
+    </section>
+    <section class="row">
+      <% tools.forEach(function(tool) { %>
+        <p> <%= tool.name %>  <a href="/tools/<%= tool.id %>" class="del-btn btn btn-sm btn-warning">Remove</a></p><br>
+      <% }); %>
+    </section>
+  </div>
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-6 text-center toolDiv">
+    <section class="row">
+      <h2 id="toolH2">Find more tools!</h2>
+      <form action="" method="POST" role="form">
+        <input tyep="text" class="form-control" name="toolSearch" placeholder="Search for tools">
+        <button type="button" class="btn btn-default" id="loadTools">Load Tools</button><br>
+      </form>
+    </section>
+    <section class="row">
+      <div id="theTools">
+      </div>
+    </section>
+  </div>
+  <div class="col-sm-1">
+  </div>
+</section>
