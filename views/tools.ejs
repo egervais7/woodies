@@ -1,37 +1,60 @@
+<% if(currentUser) { %>
+  <section class="row text-center">
+    <h1 id="toolH1">Your Tool Page!</h1>
+  </section>
+  <section class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-4 text-center toolDiv">
+      <section class="row">
+        <h2 id="toolH2">Find more tools!</h2>
+        <form action="/tools" method="POST" role="form" class="searchToolForm">
+          <input type="text" class="form-control" name="search" placeholder="Search for tools">
+          <input type="submit" id="loadTools" value="Load Tools"><br>
+        </form>
+      </section>
+      <section class="row text-center">
+        <% if (hdTools) { %>
+          <% hdTools.forEach(function(value, index) { %>
+            <div class="well">
+              <h2 class="toolsH2"><%= value.title %></h2>
+              <a href="http://www.homedepot.com<%= value.link %>"><img src="<%= value.image %>"></a>
+              <form method='POST' action='/tools/userTools'>
+                <input type='hidden' value='<%= value.title %>' name='name'>
+                <input type='submit' class='btn btn-info' value='Add to Your Tools'>
+              </form>
+            </div>
+          <% }); %>
+        <% } %>
+      </section>
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-4">
+      <section class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8 toolDiv text-center">
+          <h1>Your tools!</h1>
+
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </section>
+<% } else { %>
 <section class="row text-center">
-  <h1 id="toolH1">Your Tool Page!</h1>
-</section>
-<section class="row">
-  <div class="col-sm-1">
+  <div class="col-sm-4">
   </div>
-  <div class="col-sm-3 text-center toolDiv">
-    <section class="row">
-      <h2 id="toolH2">Tools you own:</h2>
-      <form action="" method="POST" role="form" class="toolForm">
-        <input type="text" class="form-control" id="" name="toolName" placeholder="Tool name I own">
-      </form>
-    </section>
-    <section class="row">
-      <% tools.forEach(function(tool) { %>
-        <p> <%= tool.name %>  <a href="/tools/<%= tool.id %>" class="del-btn btn btn-sm btn-warning">Remove</a></p><br>
-      <% }); %>
-    </section>
+  <div class="col-sm-4 jumbotron">
+    <h1> Please log in to conitune </h1>
+    <div>
+      <a href="/auth/login" class="btn btn-success">Login</a>
+      <a href="/auth/signup" class="btn btn-success">Signup</a>
   </div>
-  <div class="col-sm-1">
-  </div>
-  <div class="col-sm-6 text-center toolDiv">
-    <section class="row">
-      <h2 id="toolH2">Find more tools!</h2>
-      <form action="" method="POST" role="form" class="searchToolForm">
-        <input tyep="text" class="form-control" name="toolSearch" placeholder="Search for tools">
-        <button type="button" class="btn btn-default" id="loadTools">Load Tools</button><br>
-      </form>
-    </section>
-    <section class="row">
-      <div id="theTools">
-      </div>
-    </section>
-  </div>
-  <div class="col-sm-1">
+  <div class="col-sm-4">
   </div>
 </section>
+<% } %>

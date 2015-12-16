@@ -1,1 +1,33 @@
-Info
+<% if(currentUser) { %>
+  <section class="row">
+  </section>
+  <section class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-3">
+      <img src="http://i.imgur.com/kwZuL6r.jpg?2" class="aboutImage">
+    </div>
+    <div class="col-sm-6">
+      <h2 class="aboutH2">I am a web developer in the greater Seattle area with a passion for the outdoors, travel and family. I have held many different positions in a diverse set of industries. Through these I know how to learn new skills quickly and how to stay calm when in stressful situations. I work well in teams as well as on my own and I enjoy learning and mastering any subject. I hope to bring a hard working, calm, and resourceful member to any company.</h2>
+    </div>
+    <div clas=="col-sm-1">
+    </div>
+  </section>
+  <section class="row">
+    <div class="container container-fluid bottomAbout">
+    </div>
+  </section>
+  <% } else { %>
+    <section class="row text-center">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4 jumbotron">
+        <h1> Please log in to conitune </h1>
+        <div>
+          <a href="/auth/login" class="btn btn-success">Login</a>
+          <a href="/auth/signup" class="btn btn-success">Signup</a>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </section>
+  <% } %>

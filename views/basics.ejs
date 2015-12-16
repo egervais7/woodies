@@ -1,3 +1,4 @@
+<% if(currentUser) { %>
 <section class="row text-center">
   <div class="col-sm-1">
   </div>
@@ -6,8 +7,8 @@
   <% if(basicSkills) { %>
     <% basicSkills.forEach(function(value, index) { %>
       <div class="well">
-        <h2 class="basicsH2"><%= value.title %> </h2><br>
-        <h3 class="basicsH3"><%= value.text %></h3>
+        <h2 class="basicsH2"><%= value.titles %></h2><br>
+        <h3 class="basicsH3"><%= value.texts %></h3><br>
       </div>
       <% }); %>
     <% } %>
@@ -15,3 +16,17 @@
   <div class="col-sm-1">
   </div>
 </section>
+<% } else { %>
+  <section class="row text-center">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4 jumbotron">
+      <h1> Please log in to conitune </h1>
+      <div>
+        <a href="/auth/login" class="btn btn-success">Login</a>
+        <a href="/auth/signup" class="btn btn-success">Signup</a>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </section>
+<% } %>

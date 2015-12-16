@@ -6,7 +6,6 @@
     <script src='../script.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="../woodies.css" media="screen" title="no title" charset="utf-8">
-    <!-- <link rel="stylesheet" type="text/css" href="css/jTinder.css"> -->
   </head>
   <body class="woodImg">
   <nav class="navbar navbar-default" style="height: 150px;">
@@ -30,21 +29,37 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <li><a href="/tools">Your Tools</a></li>
+            <li><a href="/toolSearch">Basic Tools</a></li>
             <li><a href="/basics">Basic Skills</a></li>
             <li><a href="/search">Search for Projects</a></li>
             <li><a href="/beginners">Beginner Projects</a></li>
             <li><a href="/projects">Your Projects</a></li>
           </ul>
         </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <% if (currentUser) { %>
+              <li><a href="/restricted">Restricted page</a></li>
+            <% } %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if (!currentUser) { %>
+              <li><a href="/auth/login"></a></li>
+              <li><a href="/auth/signup"></a></li>
+            <% } else { %>
+              <p class="navbar-text">Signed in as <%= currentUser.name %></p>
+              <li><a href="/auth/logout">Logout</a></li>
+            <% } %>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
+  <div class="container">
+  <% include partials/alerts %>
+  </div>
   <%- body %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-  <!-- <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/jquery.transform2d.js"></script>
-  <script type="text/javascript" src="js/jquery.jTinder.js"></script>
-  <script>$("#tinderslide").jTinder();</script> -->
 </body>
 </html>
