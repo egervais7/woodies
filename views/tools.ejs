@@ -2,12 +2,12 @@
   <section class="row text-center">
     <h1 id="toolH1">Your Tool Page!</h1>
   </section>
-  <section class="row">
+  <section class="row searchRow">
     <div class="col-sm-1">
     </div>
-    <div class="col-sm-4 text-center toolDiv">
+    <div class="col-sm-5 text-center toolDiv">
       <section class="row">
-        <h2 id="toolH2">Find more tools!</h2>
+        <h1>Find more tools!</h1>
         <form action="/tools" method="POST" role="form" class="searchToolForm">
           <input type="text" class="form-control" name="search" placeholder="Search for tools">
           <input type="submit" class="btn btn-success" value="See Tools"><br>
@@ -15,7 +15,6 @@
       </section>
       <section class="row text-center">
         <% if (hdTools) { %>
-          <% console.log(hdTools); %>
           <% hdTools.hdTools.forEach(function(value, index) { %>
             <div class="well">
               <h2 class="toolsH2"><%= value.title %></h2>
@@ -31,35 +30,30 @@
         <% } %>
       </section>
     </div>
-    <div class="col-sm-2">
-    </div>
-    <div class="col-sm-4">
-      <section class="row">
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-8 toolDiv text-center">
-          <h1>Your tools!</h1>
-          <% if (tools) { %>
-          <% tools.forEach(function(tool){ %>
-            <div class="well">
-              <a href='<%= tool.link%>'><h2><%= tool.name %><br>
-              <img src='<%= tool.image %>'>
-            </div>
-          <% }); %>
-          <% } %>
-        </div>
-        <div class="col-sm-2">
-        </div>
+    <div class="col-sm-5">
+      <section class="row tabelRow">
+      <div class="col-sm-10 toolDiv text-center">
+        <h1>Your tools!</h1>
+        <% if (tools) { %>
+        <% tools.forEach(function(tool){ %>
+          <div class="well col-sm-6 userToolDiv">
+            <a href='<%= tool.link%>'><h4><%= tool.name %></h4  ><br>
+            <img src='<%= tool.image %>'>
+            <a href='/tools/<%= tool.id %>' class='del-btn btn btn-danger'>Delete</a>
+          </div>
+        <% }); %>
+        <% } %>
+      </div>
     </div>
     <div class="col-sm-1">
     </div>
   </section>
 <% } else { %>
-<section class="row text-center">
+<section class="row text-center else">
   <div class="col-sm-4">
   </div>
   <div class="col-sm-4 jumbotron">
-    <h3> Please log in to conitune </h3>
+    <h3> Please log in to continue </h3>
     <div>
       <a href="/auth/login" class="btn btn-success">Login</a>
       <a href="/auth/signup" class="btn btn-success">Signup</a>

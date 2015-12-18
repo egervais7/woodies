@@ -5,7 +5,7 @@
     <section class="row">
       <div class="col-sm-1">
       </div>
-      <div class="col-sm-10 text-center">
+      <div class="col-sm-10 text-center woodDiv">
         <% if(woods) { %>
           <% woods.forEach(function(value, index) { %>
             <div class="well col-sm-3 indexDiv">
@@ -22,11 +22,11 @@
     </section>
   </div>
 <% } else { %>
-<section class="row text-center">
+<section class="row text-center else">
   <div class="col-sm-4">
   </div>
   <div class="col-sm-4 jumbotron">
-    <h3> Please log in to conitune </h3>
+    <h3> Please log in to continue </h3>
     <div>
       <a href="/auth/login" class="btn btn-success">Login</a>
       <a href="/auth/signup" class="btn btn-success">Signup</a>

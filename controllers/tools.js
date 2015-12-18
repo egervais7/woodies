@@ -38,6 +38,7 @@ router.post('/userTools', function(req, res){
 
 //destroy tool from user tools
 router.delete('/:id', function(req, res){
+  console.log(req.params.id);
   db.tool.destroy({
     where: {
       id: req.params.id
