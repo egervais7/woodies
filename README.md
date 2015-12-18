@@ -25,4 +25,6 @@ This was 5 days worth of work and if I had more time I would spend it either fin
 <br>
 <br>
 Hope you find a fun project!
+<br>
+<br>
 <img src="http://i.giphy.com/ne6aJawFPDgVq.gif">
