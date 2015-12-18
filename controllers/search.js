@@ -15,6 +15,7 @@ router.post('/', function(req, res){
   var userQuery = req.body.q;
   request("https://api.pinterest.com/v1/me/search/pins/?query=" + userQuery + "&access_token=AdsOOLtiDaYOU8JLrKbHk57-DSyhFCCLXy9yEsNCtz3HPMBGzgAAAAA&fields=id%2Clink%2Cnote%2Curl%2Cimage", function(err, resp, body){
     var data = JSON.parse(body);
+    console.log(data);
     if (!err && resp.statusCode == 200) {
       res.render('search', {pins: data});}
   });

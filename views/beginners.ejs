@@ -10,6 +10,7 @@
             <div class="well col-sm-4 beginDiv">
               <h2 class="beginnersH2"><%= value.title %> </h2><br>
               <h3 class="beginnersH3"><a href="http://www.instructables.com<%= value.link%>">Check it out</a></h3>
+              <a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url=http://www.instructables.com<%= value.link %>&media=<%= value.image %>&description=<%= value.title %>"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
               <img src="<%= value.image %>" class="beginProj">
             </div>
           <% }); %>
