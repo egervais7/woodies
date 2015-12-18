@@ -7,7 +7,7 @@ Easy to find info on the basics for woodworking.
 Find and save your tools, learn some basic skills, and find project ideas!
 <br>
 <br>
-Find the app at <a href="www.woodiesapp.herokuapp.com">woodiesapp.herokuapp.com</a>
+Find the app at <a href="https://woodiesapp.herokuapp.com/">woodiesapp.herokuapp.com</a>
 <br>
 <br>
 Hope you find a fun project!
