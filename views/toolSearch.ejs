@@ -1,19 +1,20 @@
 <% if(currentUser) { %>
   <section class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
     </div>
-    <div class="col-sm-8 toolDiv text-center">
+    <div class="col-sm-10 toolDiv text-center">
       <h2 id="toolH2">12 basic woodworking tools</h2><br>
        <% if (basicTools) { %>
         <% basicTools.forEach(function(value, index) { %>
-          <div class="well">
+          <div class="well col-sm-4 custDiv">
             <h2 class="toolsearchH2"><%= value.title %></h2>
             <a href="http://www.startwoodworking.com/lists/12-basic-hand-tools-woodworking"><img src="<%= value.image %>"></a>
           </div>
         <% }); %>
+        <a href="http://www.wagnermeters.com/wood-moisture-meter/top-40-woodworking-tools/" class="link40">Another 40 good tools to have</a>
       <% } %>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-1">
     </div>
   </section>
 <% } else { %>
@@ -21,7 +22,7 @@
     <div class="col-sm-4">
     </div>
     <div class="col-sm-4 jumbotron">
-      <h1> Please log in to conitune </h1>
+      <h3> Please log in to conitune </h3>
       <div>
         <a href="/auth/login" class="btn btn-success">Login</a>
         <a href="/auth/signup" class="btn btn-success">Signup</a>

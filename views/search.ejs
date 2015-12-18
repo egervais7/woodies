@@ -1,27 +1,25 @@
 <% if(currentUser) { %>
-  <section class="row text-center">
-    <h1 class="searchH1">Search for Projects!</h1>
-  </section>
   <section class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-1">
     </div>
-    <div class="col-sm-6 text-center">
+    <div class="col-sm-10 text-center">
       <h2 class="searchH2">Find Projects on Pinterest</h2>
-      <form action="" method="POST" role="form">
-        <input type="text" class="form-control" name="pinterestName" placeholder="Project Name">
-        <button type="button" class="btn btn-default" id="loadPins">Find Pins</button>
+      <form action="/search" method="POST" role="form" class="pinForm">
+        <input type="text" class="form-control" name="q" placeholder="Project Name">
       </form>
-      <%# <div id="tinderslide">
-        <ul>
-          <li class="pane">
-            <div class="img"></div>
-            <div class="like"></div>
-            <div class="dislike"></div>
-          </li>
-        </ul>
-      </div>%>
+      <section class="row text-center">
+          <% if(pins){ %>
+            <% pins.data.forEach(function(pin){ %>
+              <div class="well col-sm-4 pinDiv">
+                <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/<%= pin.id %>/"></a>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <p>Please Type In A Search Term</p>
+          <% } %>
+      </section>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-1">
     </div>
   </section>
   <% } else { %>
@@ -29,7 +27,7 @@
       <div class="col-sm-4">
       </div>
       <div class="col-sm-4 jumbotron">
-        <h1> Please log in to conitune </h1>
+        <h3> Please log in to conitune </h3>
         <div>
           <a href="/auth/login" class="btn btn-success">Login</a>
           <a href="/auth/signup" class="btn btn-success">Signup</a>

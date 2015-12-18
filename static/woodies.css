@@ -1,7 +1,3 @@
-.toolDiv {
-  border : 5px solid black;
-  border-radius : 25px;
-}
 .woodImg {
   background-image : url("http://i.imgur.com/g96Zpo7.jpg?1");
   background-size : 100% 100%;
@@ -19,4 +15,53 @@
 .bottomAbout {
   background-image : url("http://i.imgur.com/QKw0kUJ.jpg?1");
   background-size : 100% 100%;
+}
+.currentUserStyle {
+  position: relative;
+  top: 15px;
+  left : -300px;
+}
+.dropNav {
+  position: relative;
+  top: -5px;
+}
+.divNav {
+  position: relative;
+  top: -55px;
+}
+.pinImg {
+  height: 300px;
+  widht: 300px;
+}
+.indexImgs {
+  height: 150px;
+  width: 150px;
+}
+.beginProj {
+  height: 200px;
+  width: 235px;
+}
+.custDiv {
+  height: 300px;
+}
+.indexDiv {
+  height: 400px;
+}
+.link40 {
+  padding: 15px;
+  font-size: 30px;
+}
+.beginDiv {
+  height: 500px;
+}
+.welcomeH1 {
+  position: relative;
+  top: 10px;
+}
+.pinForm {
+  padding: 15px;
+}
+.pinDiv {
+  overflow: scroll;
+  height: 400px;
 }

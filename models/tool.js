@@ -2,6 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
   var tool = sequelize.define('tool', {
     name: DataTypes.STRING,
+    image: DataTypes.STRING,
+    link: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
     classMethods: {

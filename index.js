@@ -26,10 +26,7 @@ var db = require('./models');
 //require controllers
 var searchPage = require('./controllers/search');
 var toolsPage = require('./controllers/tools');
-var projectPage = require('./controllers/projects');
 var authPage = require('./controllers/auth');
-var mainPage = require('./controllers/main');
-
 
 //search helper page
 var searchHelperPage = require('./controllers/toolsearch');
@@ -67,12 +64,7 @@ app.use(function(req, res, next){
   }
 });
 
-app.use(function(req, res, next){
-  res.locals.currentUser = req.currentUser;
-  res.locals.alerts = req.flash();
-  next();
-});
-
+//used for authenticating pinterest login
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -82,10 +74,19 @@ passport.use(strategies.pinterestStrategy);
 passport.serializeUser(strategies.serializeUser);
 passport.deserializeUser(strategies.deserializeUser);
 
+//setting up using alerts with flash
 app.use(function(req, res, next){
   res.locals.currentUser = req.user;
   res.locals.alerts = req.flash();
   next();
+});
+
+// render index page
+app.get('/', function(req, res){
+  var search = req.body.search;
+  searchHelperPage.woods(search, function(woods){
+    res.render('index', woods);
+  });
 });
 
 // render about page
@@ -109,18 +110,7 @@ app.get('/basics', function(req, res){
   });
 });
 
-// render tools search page with scraped tools and search home depot tools
-// app.get('/tools', function(req, res){
-//   res.render('tools', {hdTools: null});
-// });
-//
-// app.post('/tools', function(req, res){
-//   var search = req.body.search;
-//   searchHelperPage.homeDepot(search, function(hdTools){
-//     res.render('tools', hdTools);
-//   });
-// });
-//
+//render tool search page for user to data scrape from home depot for tools
 app.get('/toolsearch', function(req, res){
   var search = req.body.search;
   searchHelperPage.topTools(search, function(basicTools){
@@ -130,10 +120,8 @@ app.get('/toolsearch', function(req, res){
 
 //set up controllers
 app.use('/search', searchPage);
-app.use('/projects', projectPage);
 app.use('/tools', toolsPage);
 app.use('/auth', authPage);
-app.use('/', mainPage);
 
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);

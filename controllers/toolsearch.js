@@ -3,6 +3,27 @@ var $ = require('cheerio');
 var request = require('request');
 
 module.exports = {
+  //was for data scraping from pinterest, which does not work
+  // pinterest : function(query, callback) {
+  //     var pinterestObj;
+  //     var pinterestArray = [];
+  //     request("https://api.pinterest.com/v1/me/search/pins/?query=" + query + "&access_token=AdsOOLtiDaYOU8JLrKbHk57-DSyhFCCLXy9yEsNCtz3HPMBGzgAAAAA&fields=id%2Clink%2Cnote%2Curl%2Cimage", function(err, resp, html){
+  //       if(!err && resp.statusCode === 200) {
+  //         var parsedHTML = $.load(html);
+  //         parsedHTML('.fadeContainer').map(function(i, pin) {
+  //           var title = $(pin).find('img').attr('alt');
+  //           var image = $(pin).find('img').attr('src');
+  //           if( !title || !image){
+  //             return;
+  //           }
+  //           pinterestArray.push({ title: title, image: image});
+  //         });
+  //         pinterestObj = {pins: pinterestArray};
+  //         callback(pinterestObj);
+  //       }
+  //     });
+  //   },
+  //data scrape tool search from home depot
   homeDepot : function(query, callback) {
       var toolsObj;
       var toolsArray = [];
@@ -23,12 +44,12 @@ module.exports = {
         }
       });
     },
+  //data scrape basic tools for a woodworker to have
   topTools : function(query, callback) {
       var topToolObj;
       var topToolArray = [];
       request("http://www.startwoodworking.com/lists/12-basic-hand-tools-woodworking", function(err, resp, html){
         if(!err && resp.statusCode === 200) {
-          console.log('No Error, found HTML');
           var parsedHTML = $.load(html);
           parsedHTML('.list-item').map(function(i, tool){
             var title = $(tool).find('strong').text();
@@ -43,12 +64,12 @@ module.exports = {
         }
       });
     },
+  // data scrape starter projects
   starters : function(query, callback) {
     var beginnerProjectsObj;
     var beginnerProjectsArray = [];
     request('http://www.instructables.com/id/Woodworking-Projects-for-Beginners/', function(err, resp, html){
       if(!err && resp.statusCode === 200) {
-        console.log('No Error, found HTML');
         var parsedHTML = $.load(html);
         parsedHTML('.ible-thumb').map(function(i, projectBegin) {
           var image = $(projectBegin).find('.ible-image').attr('src');
@@ -64,12 +85,12 @@ module.exports = {
       }
     });
   },
+  //data scrape basic skills for a woodworker to have
   skills : function(query, callback) {
     var basicSkillsObj;
     var basicSkillsArray = [];
     request('http://www.makeuseof.com/tag/beginners-woodworking-5-skills-need-know/', function(err, resp, html){
       if(!err && resp.statusCode === 200) {
-        console.log('No Error, found HTML');
         var parsedHTML = $.load(html);
         parsedHTML('.article_body').map(function(i, article) {
           var title = $(article).find('h2').text();
@@ -84,12 +105,12 @@ module.exports = {
       }
     });
   },
+//data scrape some examples of different types of wood
   woods : function(query, callback) {
     var woodObj;
     var woodArray = [];
     request('http://www.wood-database.com/wood-articles/wood-identification-guide/', function(err, resp, html){
       if(!err && resp.statusCode === 200) {
-        console.log('No Error, found HTML');
         var parsedHTML = $.load(html);
         parsedHTML('.wp-caption').map(function(i, woodText) {
           //var title = $(woodText).find('strong').text();

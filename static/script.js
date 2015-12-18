@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+// set up a delete path for user to delete tool from their table
   $(".del-btn").click(function(e){
     e.preventDefault();
     var url = $(this).attr("href");

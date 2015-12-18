@@ -25,24 +25,25 @@ module.exports = {
   pinterestStrategy: new PinterestStrategy({
     clientID : process.env.PINTEREST_APP_ID,
     clientSecret : process.env.PINTEREST_APP_SECRET,
-    scope: ['read_public', 'read_relationships'],
-    callbackURL : process.env.BASE_URL + '/auth/pinterest/callback',
+    callbackURL : process.env.BASE_URL_SECURE + '/auth/callback/pinterest/',
     profileFields : ['email', 'displayName']
   },
   function(accessToken, refreshToken, profile, done){
-    db.provider.find({where: {
-      pinterestId: profile.id,
-      type: profile.provider
-    }, include: [db.user]}).then(function(provider){
+    db.provider.find({
+      where: {
+        pid: profile.id,
+        type: profile.provider
+      },
+      include: [db.user]
+    }).then(function(provider){
       if (provider && provider.user) {
         provider.token = accessToken;
         provider.save().then(function(){
           done(null, provider.user.get());
         });
       } else {
-        var email = profile.emails[0].value;
         db.user.findOrCreate({
-          where : {email: email},
+          where : {username: profile.username},
           defaults: {name: profile.displayName}
         }).spread(function(user, created){
           if (created) {
@@ -51,7 +52,7 @@ module.exports = {
               token: accessToken,
               type: profile.provider
             }).then(function(){
-              done(null, user.get);
+              done(null, user.get());
             });
           } else {
             done(null, false, {message: 'You already signed up with this email. Please log in'});
