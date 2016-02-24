@@ -1,28 +1,8 @@
 var express = require('express');
-var $ = require('cheerio');
+var $       = require('cheerio');
 var request = require('request');
 
 module.exports = {
-  //was for data scraping from pinterest, which does not work
-  // pinterest : function(query, callback) {
-  //     var pinterestObj;
-  //     var pinterestArray = [];
-  //     request("https://api.pinterest.com/v1/me/search/pins/?query=" + query + "&access_token=AdsOOLtiDaYOU8JLrKbHk57-DSyhFCCLXy9yEsNCtz3HPMBGzgAAAAA&fields=id%2Clink%2Cnote%2Curl%2Cimage", function(err, resp, html){
-  //       if(!err && resp.statusCode === 200) {
-  //         var parsedHTML = $.load(html);
-  //         parsedHTML('.fadeContainer').map(function(i, pin) {
-  //           var title = $(pin).find('img').attr('alt');
-  //           var image = $(pin).find('img').attr('src');
-  //           if( !title || !image){
-  //             return;
-  //           }
-  //           pinterestArray.push({ title: title, image: image});
-  //         });
-  //         pinterestObj = {pins: pinterestArray};
-  //         callback(pinterestObj);
-  //       }
-  //     });
-  //   },
   //data scrape tool search from home depot
   homeDepot : function(query, callback) {
       var toolsObj;

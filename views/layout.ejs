@@ -26,16 +26,23 @@
               <p>Signed in as <%= currentUser.name %>
               <li><a href="/auth/logout" style="position: relative; top: -30px; left:50px;">Logout</a></p></li>
           </ul>
+        <% } else { %>
+          <ul class="nav navbar-nav navbar-right text-center loginBtns">
+            <li style="font-weight: bold; font-size: 15px"><a href="/auth/login">Login</a></li>
+            <li style="font-weight: bold; font-size: 15px"><a href="/auth/signup">Signup</a></li>
+          </ul>
         <% } %>
         <div class="dropdown navbar-right dropNav">
-          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-success btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
-            Nav
+            NAVIGATION
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <li><a href="/toolSearch">Basic Tools</a></li>
-            <li><a href="/tools">Your Tools</a></li>
+            <% if (currentUser) { %>
+              <li><a href="/tools">Your Tools</a></li>
+            <% } %>
             <li><a href="/beginners">Beginner Projects</a></li>
             <li><a href="/search">Search for Projects</a></li>
             <li><a href="/basics">Basic Skills</a></li>

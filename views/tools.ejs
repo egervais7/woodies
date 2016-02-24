@@ -5,7 +5,7 @@
   <section class="row searchRow">
     <div class="col-sm-1">
     </div>
-    <div class="col-sm-5 text-center toolDiv">
+    <div class="col-sm-5 col-xs-4 text-center toolDiv">
       <section class="row">
         <h1>Find more tools!</h1>
         <form action="/tools" method="POST" role="form" class="searchToolForm">
@@ -18,7 +18,7 @@
           <% hdTools.hdTools.forEach(function(value, index) { %>
             <div class="well">
               <h2 class="toolsH2"><%= value.title %></h2>
-              <a href="http://www.homedepot.com<%= value.link %>"><img src="<%= value.image %>"></a>
+              <a href="http://www.homedepot.com<%= value.link %>"><img src="<%= value.image %>" class="img-responsive"></a>
               <form method='POST' action='/tools/userTools'>
                 <input type='hidden' value='<%= value.title %>' name='name'>
                 <input type='hidden' value='<%= value.link %>' name='link'>
@@ -32,33 +32,35 @@
     </div>
     <div class="col-sm-5">
       <section class="row tabelRow">
-      <div class="col-sm-10 toolDiv text-center">
-        <h1>Your tools!</h1>
-        <% if (tools) { %>
-        <% tools.forEach(function(tool){ %>
-          <div class="well col-sm-6 userToolDiv">
-            <a href='<%= tool.link%>'><h4><%= tool.name %></h4  ><br>
-            <img src='<%= tool.image %>'>
-            <a href='/tools/<%= tool.id %>' class='del-btn btn btn-danger'>Delete</a>
-          </div>
-        <% }); %>
-        <% } %>
-      </div>
+        <div class="col-sm-10 col-xs-10 toolDiv text-center">
+          <h1>Your tools!</h1>
+          <% if (tools) { %>
+            <% tools.forEach(function(tool){ %>
+              <div class="well col-sm-6 col-xs-10 userToolDiv">
+                <a href='<%= tool.link%>'><h4><%= tool.name %></h4><br>
+                <img src='<%= tool.image %>' class="img-responsive">
+                <a href='/tools/<%= tool.id %>' class='del-btn btn btn-danger'>Delete</a>
+              </div>
+            <% }); %>
+          <% } %>
+        </div>
+      </section>
     </div>
     <div class="col-sm-1">
     </div>
   </section>
 <% } else { %>
-<section class="row text-center else">
-  <div class="col-sm-4">
-  </div>
-  <div class="col-sm-4 jumbotron">
-    <h3> Please log in to continue </h3>
-    <div>
-      <a href="/auth/login" class="btn btn-success">Login</a>
-      <a href="/auth/signup" class="btn btn-success">Signup</a>
-  </div>
-  <div class="col-sm-4">
-  </div>
-</section>
+  <section class="row text-center else">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4 jumbotron">
+      <h3> Please log in to see your Tools or start a tool box </h3>
+      <div>
+        <a href="/auth/login" class="btn btn-success">Login</a>
+        <a href="/auth/signup" class="btn btn-success">Signup</a>
+      </div>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </section>
 <% } %>

@@ -1,37 +1,39 @@
-<% if(currentUser) { %>
-  <div class="container container-fluid">
-    <section class="row text-center">
-    </section>
-    <section class="row">
-      <div class="col-sm-1">
-      </div>
-      <div class="col-sm-10 text-center woodDiv">
-        <% if(woods) { %>
-          <% woods.forEach(function(value, index) { %>
-            <div class="well col-sm-3 indexDiv">
-              <img src="<%= value.image %>" class="indexImgs">
-              <p class="beginnersH3"><%= value.text %></p>
-            </div>
-          <% }); %>
-        <% } %>
-        <h1 class="woodsH1"><a href="http://www.wood-database.com/wood-articles/wood-identification-guide/">This full article</a><br>
-        <a href="http://woodfloors.org/types.aspx">Read about wood flooring</a><br></h1>
-      </div>
-      <div class="col-sm-1">
-      </div>
-    </section>
-  </div>
-<% } else { %>
-<section class="row text-center else">
-  <div class="col-sm-4">
-  </div>
-  <div class="col-sm-4 jumbotron">
-    <h3> Please log in to continue </h3>
-    <div>
-      <a href="/auth/login" class="btn btn-success">Login</a>
-      <a href="/auth/signup" class="btn btn-success">Signup</a>
-  </div>
-  <div class="col-sm-4">
-  </div>
-</section>
-<% } %>
+<div class="container container-fluid">
+  <section class="row">
+  </section>
+  <section class="row text-center">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8 woodiesAbout">
+      <h2>
+        <p>Woodies is a place for people that are interested in woodworking, but don't really know where to get started.</p>
+        <p>Here, we offer a place to learn basic skills for woodworking, learn the basic tools you need, add the tools you own to your tool box, and search beginner projects as well as find lots of others from pinterest that you might be thinking of doing.</p>
+        <p>We hope that you find all that you need to go out and get started with woodworking!</p>
+        <p>Good luck and have lots of fun!</p>
+        <p>And of course, be safe!</p>
+      </h2>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </section>
+  <section class="row">
+  </section>
+  <section class="row text-center">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-10 col-xs-10 text-center woodDiv">
+      <% if(woods) { %>
+        <% woods.forEach(function(value, index) { %>
+          <div class="well col-sm-3 col-xs-6 indexDiv">
+            <img src="<%= value.image %>" class="indexImgs img-responsive">
+            <p class="beginnersH3"><%= value.text %></p>
+          </div>
+        <% }); %>
+      <% } %>
+      <h1 class="woodsH1"><a href="http://www.wood-database.com/wood-articles/wood-identification-guide/">This full article</a><br>
+      <a href="http://woodfloors.org/types.aspx">Read about wood flooring</a><br></h1>
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </section>
+</div>

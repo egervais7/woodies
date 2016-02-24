@@ -1,8 +1,7 @@
-var express = require('express');
-var db = require('./../models');
+var express          = require('express');
+var db               = require('./../models');
 var searchHelperPage = require('./toolsearch');
-
-var router = express.Router();
+var router           = express.Router();
 
 // find user tools and populate table if user has tools
 router.get('/', function(req, res){
@@ -24,7 +23,6 @@ router.post('/', function(req, res){
 
 //add new tool to user tools
 router.post('/userTools', function(req, res){
-  console.log(res.locals.currentUser.id);
   var newTool = {
     name: req.body.name,
     image: req.body.image,
@@ -38,7 +36,6 @@ router.post('/userTools', function(req, res){
 
 //destroy tool from user tools
 router.delete('/:id', function(req, res){
-  console.log(req.params.id);
   db.tool.destroy({
     where: {
       id: req.params.id
